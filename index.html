@@ -224,44 +224,6 @@
         .price-table tr:nth-child(even) {
             background-color: #f2f2f2;
         }
-
-        .order-status {
-            margin-top: 2rem;
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .order-status input {
-            padding: 0.5rem;
-            margin-bottom: 1rem;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-            width: 100%;
-        }
-
-        .order-status button {
-            background-color: #ff6600;
-            border: none;
-            color: white;
-            padding: 0.5rem 1rem;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
-
-        .order-status button:hover {
-            background-color: #e55b00;
-        }
-
-        .order-status-result {
-            margin-top: 1rem;
-        }
     </style>
 </head>
 <body>
@@ -295,174 +257,193 @@
             </div>
             <div class="product">
                 <img src="thập cẩm lạp xưởng.jpg" alt="Bánh Trung Thu Thập cẩm">
-                <h3>Bánh
-                    <h3>Bánh Thập Cẩm lạp xưởng</h3>
-                    <p>Giá: 80.000 VND</p>
-                    <button onclick="addToCart('Bánh Thập Cẩm', 80000)">Đặt ngay</button>
-                </div>
-                <div class="product">
-                    <img src="gà quay jambon.jpg" alt="Bánh Trung Thu gà quay">
-                    <h3>Bánh Trung Thu gà quay jambon</h3>
-                    <p>Giá: 100.000 VND</p>
-                    <button onclick="addToCart('Bánh Trung Thu gà quay', 100000)">Đặt ngay</button>
-                </div>
-                <div class="product">
-                    <img src="Bánh trung thu to.jpg" alt="Bánh Trung Thu to">
-                    <img src="Bánh trung thu đặc biệt.jpg" alt="Bánh Trung Thu to">
-                    <h3>Bánh Trung Thu đặc biệt</h3>
-                    <p>Giá: 200.000 VND</p>
-                    <button onclick="addToCart('Bánh Trung Thu to', 200000)">Đặt ngay</button>
-                </div>
-                <!-- Thêm nhiều sản phẩm khác -->
-            </section>
-            <section id="cart">
-                <h2>Giỏ Hàng</h2>
-                <div id="cartItems" class="cart">
+                <h3>Bánh Thập Cẩm lạp xưởng</h3>
+                <p>Giá: 80.000 VND</p>
+                <button onclick="addToCart('Bánh Thập Cẩm lạp xưởng', 80000)">Đặt ngay</button>
+            </div>
+            <div class="product">
+                <img src="gà quay jambon.jpg" alt="Bánh Trung Thu gà quay">
+                <h3>Bánh Trung Thu gà quay jambon</h3>
+                <p>Giá: 100.000 VND</p>
+                <button onclick="addToCart('Bánh Trung Thu gà quay jambon', 100000)">Đặt ngay</button>
+            </div>
+            <div class="product">
+                <img src="Bánh trung thu đặc biệt.jpg" alt="Bánh Trung Thu đặc biệt">
+                <h3>Bánh Trung Thu đặc biệt</h3>
+                <p>Giá: 200.000 VND</p>
+                <button onclick="addToCart('Bánh Trung Thu đặc biệt', 200000)">Đặt ngay</button>
+            </div>
+            <!-- Thêm nhiều sản phẩm khác -->
+        </section>
+        <section id="cart">
+            <h2>Giỏ Hàng</h2>
+            <table id="cartTable" class="price-table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Sản Phẩm</th>
+                        <th>Đơn Giá</th>
+                        <th>Số Lượng</th>
+                        <th>Thành Tiền</th>
+                        <th>Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody id="cartItems">
                     <!-- Items will be added here dynamically -->
-                </div>
-                <div class="checkout">
-                    <button onclick="showCheckoutForm()">Thanh Toán</button>
-                </div>
-            </section>
-            <section id="contact">
-                <h2>Liên Hệ</h2>
-                <p>Email: banhkeongocbich@gmail.com</p>
-                <p>Số điện thoại: 0939 890 049</p>
-            </section>
-            <section id="checkout" class="checkout-form">
-                <h2>Thông Tin Thanh Toán</h2>
-                <form onsubmit="processCheckout(event)">
-                    <label for="name">Họ và tên:</label>
-                    <input type="text" id="name" name="name" required><br><br>
-                    <label for="address">Địa chỉ:</label>
-                    <input type="text" id="address" name="address" required><br><br>
-                    <label for="phone">Số điện thoại:</label>
-                    <input type="text" id="phone" name="phone" required><br><br>
-                    <label for="payment-method">Chọn phương thức thanh toán:</label>
-                    <select id="payment-method" name="payment-method" required>
-                        <option value="cash-on-delivery">Thanh toán khi nhận hàng</option>
-                        <option value="bank-transfer">Chuyển khoản ngân hàng</option>
-                    </select><br><br>
-                    <button type="submit">Xác Nhận Thanh Toán</button>
-                </form>
-            </section>
-            <section id="consultation">
-                <h2>Tư Vấn</h2>
-                <div class="contact-form">
-                    <h3>Nhắn Tin Với Chúng Tôi</h3>
-                    <form onsubmit="sendMessage(event)">
-                        <label for="customerName">Tên của bạn:</label>
-                        <input type="text" id="customerName" name="customerName" required>
-                        <label for="customerMessage">Tin nhắn:</label>
-                        <textarea id="customerMessage" name="customerMessage" rows="4" required></textarea>
-                        <button type="submit">Gửi Tin Nhắn</button>
-                    </form>
-                </div>
-            </section>
-            <section id="order-status">
-                <h2>Kiểm Tra Đơn Hàng</h2>
-                <div class="order-status">
-                    <label for="orderId">Nhập mã đơn hàng:</label>
-                    <input type="text" id="orderId" name="orderId" required>
-                    <button onclick="checkOrderStatus()">Kiểm Tra</button>
-                    <div id="order-status-result" class="order-status-result"></div>
-                </div>
-            </section>
-        </main>
-        <footer>
-            <p>&copy; 2024 Bánh Trung Thu Ngọc Bích.</p>
-        </footer>
-        <script>
-            const cart = [];
-            const orders = {}; // Simulate order storage
+                </tbody>
+            </table>
+            <div class="checkout">
+                <button onclick="showCheckoutForm()">Thanh Toán</button>
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Liên Hệ</h2>
+            <p>Email: banhkeongocbich@gmail.com</p>
+            <p>Số điện thoại: 0939 890 049</p>
+        </section>
+        <section id="checkout" class="checkout-form">
+            <h2>Thông Tin Thanh Toán</h2>
+            <form onsubmit="processCheckout(event)">
+                <label for="name">Họ và tên:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="address">Địa chỉ:</label>
+                <input type="text" id="address" name="address" required><br><br>
+                <label for="phone">Số điện thoại:</label>
+                <input type="text" id="phone" name="phone" required><br><br>
+                <label for="payment-method">Chọn phương thức thanh toán:</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="cash-on-delivery">Thanh toán khi nhận hàng</option>
+                    <option value="bank-transfer">Chuyển khoản ngân hàng</option>
+                </select><br><br>
+                <button type="submit">Xác Nhận Thanh Toán</button>
+            </form>
+        </section>
+        <section id="consultation">
+            <h2>Tư Vấn</h2>
+            <div class="contact-form">
+                <label for="contactName">Tên:</label>
+                <input type="text" id="contactName" placeholder="Nhập tên của bạn">
+                <label for="contactEmail">Email:</label>
+                <input type="email" id="contactEmail" placeholder="Nhập email của bạn">
+                <label for="contactMessage">Tin nhắn:</label>
+                <textarea id="contactMessage" rows="4" placeholder="Nhập tin nhắn của bạn"></textarea>
+                <button onclick="sendContactMessage(event)">Gửi</button>
+            </div>
+        </section>
+        <section id="order-status">
+            <h2>Kiểm Tra Đơn Hàng</h2>
+            <div class="order-status">
+                <label for="orderId">Nhập mã đơn hàng:</label>
+                <input type="text" id="orderId" name="orderId" required>
+                <button onclick="checkOrderStatus()">Kiểm Tra</button>
+                <div id="order-status-result" class="order-status-result"></div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Bánh Trung Thu Ngọc Bích.</p>
+    </footer>
+    <script>
+        const cart = [];
+        const orders = {}; // Simulate order storage
     
-            function addToCart(product, price) {
-                cart.push({ product, price });
-                displayCart();
+        function addToCart(product, price) {
+            const existingItem = cart.find(item => item.product === product);
+            if (existingItem) {
+                existingItem.quantity += 1;
+                existingItem.totalPrice = existingItem.price * existingItem.quantity;
+            } else {
+                cart.push({ product, price, quantity: 1, totalPrice: price });
+            }
+            displayCart();
+        }
+    
+        function displayCart() {
+            const cartTable = document.getElementById('cartItems');
+            cartTable.innerHTML = '';
+    
+            cart.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${item.product}</td>
+                    <td>${item.price} VND</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.totalPrice} VND</td>
+                    <td><button onclick="removeFromCart(${index})">Xóa</button></td>
+                `;
+                cartTable.appendChild(row);
+            });
+    
+            const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+            const totalRow = document.createElement('tr');
+            totalRow.innerHTML = `
+                <td colspan="4"><strong>Tổng:</strong></td>
+                <td colspan="2"><strong>${total} VND</strong></td>
+            `;
+            cartTable.appendChild(totalRow);
+        }
+    
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            displayCart();
+        }
+    
+        function showCheckoutForm() {
+            const checkoutForm = document.getElementById('checkout');
+            checkoutForm.style.display = 'block';
+        }
+    
+        function processCheckout(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const paymentMethod = document.getElementById('payment-method').value;
+    
+            const orderId = Date.now(); // Simple order ID based on timestamp
+            orders[orderId] = {
+                name, address, phone, paymentMethod, status: 'Đang xử lý'
+            };
+    
+            let message = `Thanh toán thành công! Mã đơn hàng của bạn là ${orderId}. Chúng tôi sẽ giao hàng đến trong vòng 1 tuần. Mọi vấn đề cần giải quyết vui lòng liên hệ với chúng tôi`;
+            if (paymentMethod === 'bank-transfer') {
+                message += `\nVui lòng chuyển khoản ngân hàng để xác nhận đơn hàng.`;
             }
     
-            function displayCart() {
-                const cartItems = document.getElementById('cartItems');
-                cartItems.innerHTML = '';
+            alert(message);
+            cart.length = 0;
+            displayCart();
+            const checkoutForm = document.getElementById('checkout');
+            checkoutForm.style.display = 'none';
+        }
     
-                cart.forEach((item, index) => {
-                    const cartItem = document.createElement('div');
-                    cartItem.className = 'cart-item';
-                    cartItem.innerHTML = `
-                        <span>${item.product}</span>
-                        <span>${item.price} VND</span>
-                        <button onclick="removeFromCart(${index})">Xóa</button>
-                    `;
-                    cartItems.appendChild(cartItem);
-                });
+        function sendContactMessage(event) {
+            event.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const message = document.getElementById('contactMessage').value;
+            alert(`Cảm ơn ${name}, tin nhắn của bạn đã được gửi:\n"${message}"`);
+            document.querySelector('.contact-form').reset();
+        }
     
-                const total = cart.reduce((sum, item) => sum + item.price, 0);
-                const totalDiv = document.createElement('div');
-                totalDiv.innerHTML = `<strong>Tổng: ${total} VND</strong>`;
-                cartItems.appendChild(totalDiv);
+        function checkOrderStatus() {
+            const orderId = document.getElementById('orderId').value;
+            const result = document.getElementById('order-status-result');
+            
+            if (orders[orderId]) {
+                const order = orders[orderId];
+                result.innerHTML = `
+                    <h3>Thông Tin Đơn Hàng</h3>
+                    <p><strong>Họ và tên:</strong> ${order.name}</p>
+                    <p><strong>Địa chỉ:</strong> ${order.address}</p>
+                    <p><strong>Số điện thoại:</strong> ${order.phone}</p>
+                    <p><strong>Phương thức thanh toán:</strong> ${order.paymentMethod === 'cash-on-delivery' ? 'Thanh toán khi nhận hàng' : 'Chuyển khoản ngân hàng'}</p>
+                    <p><strong>Trạng thái:</strong> ${order.status}</p>
+                `;
+            } else {
+                result.innerHTML = `<p>Mã đơn hàng không hợp lệ.</p>`;
             }
-    
-            function removeFromCart(index) {
-                cart.splice(index, 1);
-                displayCart();
-            }
-    
-            function showCheckoutForm() {
-                const checkoutForm = document.getElementById('checkout');
-                checkoutForm.style.display = 'block';
-            }
-    
-            function processCheckout(event) {
-                event.preventDefault();
-                const name = document.getElementById('name').value;
-                const address = document.getElementById('address').value;
-                const phone = document.getElementById('phone').value;
-                const paymentMethod = document.getElementById('payment-method').value;
-    
-                const orderId = Date.now(); // Simple order ID based on timestamp
-                orders[orderId] = {
-                    name, address, phone, paymentMethod, status: 'Đang xử lý'
-                };
-    
-                let message = `Thanh toán thành công! Mã đơn hàng của bạn là ${orderId}. Chúng tôi sẽ giao hàng đến trong vòng 1 tuần.Mọi vấn đề cần giải quyết vui lòng liên hệ với chúng tôi`;
-                if (paymentMethod === 'bank-transfer') {
-                    message += `\nVui lòng chuyển khoản ngân hàng để xác nhận đơn hàng.`;
-                }
-    
-                alert(message);
-                cart.length = 0;
-                displayCart();
-                const checkoutForm = document.getElementById('checkout');
-                checkoutForm.style.display = 'none';
-            }
-    
-            function sendMessage(event) {
-                event.preventDefault();
-                const name = document.getElementById('customerName').value;
-                const message = document.getElementById('customerMessage').value;
-                alert(`Cảm ơn ${name}, tin nhắn của bạn đã được gửi:\n"${message}"`);
-                document.querySelector('.contact-form form').reset();
-            }
-    
-            function checkOrderStatus() {
-                const orderId = document.getElementById('orderId').value;
-                const result = document.getElementById('order-status-result');
-                
-                if (orders[orderId]) {
-                    const order = orders[orderId];
-                    result.innerHTML = `
-                        <h3>Thông Tin Đơn Hàng</h3>
-                        <p><strong>Họ và tên:</strong> ${order.name}</p>
-                        <p><strong>Địa chỉ:</strong> ${order.address}</p>
-                        <p><strong>Số điện thoại:</strong> ${order.phone}</p>
-                        <p><strong>Phương thức thanh toán:</strong> ${order.paymentMethod === 'cash-on-delivery' ? 'Thanh toán khi nhận hàng' : 'Chuyển khoản ngân hàng'}</p>
-                        <p><strong>Trạng thái:</strong> ${order.status}</p>
-                    `;
-                } else {
-                    result.innerHTML = `<p>Mã đơn hàng không hợp lệ.</p>`;
-                }
-            }
-        </script>
-    </body>
-    </html>
-    
+        }
+    </script>
+</body>
+</html>
