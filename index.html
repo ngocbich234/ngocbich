@@ -252,10 +252,10 @@
         <section id="products">
             <h2>Sản Phẩm</h2>
             <div class="product">
-                <img src="đậu xanh.jpg" alt="Bánh Trung Thu Chay">
-                <h3>Bánh Trung Thu Chay</h3>
+                <img src="đậu xanh.jpg" alt="Bánh Trung Thu đậu xanh">
+                <h3>Bánh Trung Thu đậu xanh</h3>
                 <p>Giá: 50.000 VND</p>
-                <button onclick="addToCart('Bánh Trung Thu Chay', 50000)">Đặt ngay</button>
+                <button onclick="addToCart('Bánh Trung Thu đậu xanh', 50000)">Đặt ngay</button>
             </div>
             <div class="product">
                 <img src="thập cẩm lạp xưởng.jpg" alt="Bánh Trung Thu Thập cẩm">
@@ -318,6 +318,21 @@
                         <option value="cash-on-delivery">Thanh toán khi nhận hàng</option>
                         <option value="bank-transfer">Chuyển khoản ngân hàng</option>
                     </select><br><br>
+                    <div id="order-summary">
+                        <h3>Danh Sách Sản Phẩm</h3>
+                        <table class="price-table">
+                            <thead>
+                                <tr>
+                                    <th>Sản Phẩm</th>
+                                    <th>Đơn Giá</th>
+                                    <th>Số Lượng</th>
+                                    <th>Thành Tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orderSummaryTable">
+                            </tbody>
+                    </table>
+                </div>
                     <textarea id="cart-items-hidden" name="cart-items" readonly style="display: none;"></textarea>
                     <button type="submit">Xác Nhận Thanh Toán</button>
                 </form>
@@ -400,6 +415,21 @@
         function showCheckoutForm() {
             const checkoutForm = document.getElementById('checkout');
             checkoutForm.style.display = 'block';
+            const orderSummaryTable = document.getElementById('orderSummaryTable');
+            orderSummaryTable.innerHTML = '';
+            cart.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.product}</td>
+                    <td>${item.price.toLocaleString()} VND</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.totalPrice.toLocaleString()} VND</td>
+                `;
+                orderSummaryTable.appendChild(row);
+            });
+
+            document.getElementById('cart-items-hidden').value = JSON.stringify(cart);
+            document.querySelector('#checkout').scrollIntoView({ behavior: 'smooth' });
         }
     
         function processCheckout(event) {
