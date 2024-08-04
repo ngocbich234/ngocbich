@@ -9,7 +9,7 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8d7da; /* Màu đỏ nhạt */
+            background-color: #f8d7da; 
             color: #333;
         }
 
@@ -74,13 +74,15 @@
         }
 
         .hero-text {
-            background-color: rgba(0, 255, 255, 0.8); 
-            display: inline-block;
-            padding: 1rem;
-            border-radius: 50px;
-            position: relative;
-            z-index: 2;
-        }
+        background-color: rgba(240, 151, 9, 0.655); 
+        display: inline-block;
+        padding: 1rem;
+        border-radius: 50px;
+        position: relative;
+        z-index: 2;
+        font-size: 2rem; 
+        font-weight: bold; 
+    }
 
         .hero-text h2, .hero-text p {
             margin: 0;
@@ -274,78 +276,84 @@
                 <button onclick="addToCart('Bánh Trung Thu đặc biệt', 200000)">Đặt ngay</button>
             </div>
             <!-- Thêm nhiều sản phẩm khác -->
-        </section>
-        <section id="cart">
-            <h2>Giỏ Hàng</h2>
-            <table id="cartTable" class="price-table">
-                <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th>Sản Phẩm</th>
-                        <th>Đơn Giá</th>
-                        <th>Số Lượng</th>
-                        <th>Thành Tiền</th>
-                        <th>Hành Động</th>
-                    </tr>
-                </thead>
-                <tbody id="cartItems">
-                    <!-- Items will be added here dynamically -->
-                </tbody>
-            </table>
-            <div class="checkout">
-                <button onclick="showCheckoutForm()">Thanh Toán</button>
-            </div>
-        </section>
-        <section id="contact">
-            <h2>Liên Hệ</h2>
+            <section id="cart">
+                <h2>Giỏ Hàng</h2>
+                <table id="cartTable" class="price-table">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Sản Phẩm</th>
+                            <th>Đơn Giá</th>
+                            <th>Số Lượng</th>
+                            <th>Thành Tiền</th>
+                            <th>Hành Động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cartItems">
+                        <!-- Items will be added here dynamically -->
+                    </tbody>
+                </table>
+                <div class="checkout">
+                    <button onclick="showCheckoutForm()">Thanh Toán</button>
+                </div>
+            </section>
+            <section id="contact">
+                <h2>Liên Hệ</h2>
             <p>Email: banhkeongocbich@gmail.com</p>
             <p>Số điện thoại: 0939 890 049</p>
-        </section>
-        <section id="checkout" class="checkout-form">
-            <h2>Thông Tin Thanh Toán</h2>
-            <form onsubmit="processCheckout(event)">
-                <label for="name">Họ và tên:</label>
-                <input type="text" id="name" name="name" required><br><br>
-                <label for="address">Địa chỉ:</label>
-                <input type="text" id="address" name="address" required><br><br>
-                <label for="phone">Số điện thoại:</label>
-                <input type="text" id="phone" name="phone" required><br><br>
-                <label for="payment-method">Chọn phương thức thanh toán:</label>
-                <select id="payment-method" name="payment-method" required>
-                    <option value="cash-on-delivery">Thanh toán khi nhận hàng</option>
-                    <option value="bank-transfer">Chuyển khoản ngân hàng</option>
-                </select><br><br>
-                <button type="submit">Xác Nhận Thanh Toán</button>
-            </form>
-        </section>
-        <section id="consultation">
-            <h2>Tư Vấn</h2>
-            <div class="contact-form">
-                <label for="contactName">Tên:</label>
-                <input type="text" id="contactName" placeholder="Nhập tên của bạn">
-                <label for="contactEmail">Email:</label>
-                <input type="email" id="contactEmail" placeholder="Nhập email của bạn">
-                <label for="contactMessage">Tin nhắn:</label>
-                <textarea id="contactMessage" rows="4" placeholder="Nhập tin nhắn của bạn"></textarea>
-                <button onclick="sendContactMessage(event)">Gửi</button>
+            </section>
+            <section id="checkout" class="checkout-form">
+                <h2>Thông Tin Thanh Toán</h2>
+                <form action="https://formsubmit.co/nguyennhatduyyyw@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="Đơn hàng mới từ trang web">
+                    <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you">
+                    <label for="name">Họ và tên:</label>
+                    <input type="text" id="name" name="name" required><br><br>
+                    <label for="address">Địa chỉ:</label>
+                    <input type="text" id="address" name="address" required><br><br>
+                    <label for="phone">Số điện thoại:</label>
+                    <input type="text" id="phone" name="phone" required><br><br>
+                    <label for="payment-method">Chọn phương thức thanh toán:</label>
+                    <select id="payment-method" name="payment-method" required>
+                        <option value="cash-on-delivery">Thanh toán khi nhận hàng</option>
+                        <option value="bank-transfer">Chuyển khoản ngân hàng</option>
+                    </select><br><br>
+                    <textarea id="cart-items-hidden" name="cart-items" readonly style="display: none;"></textarea>
+                    <button type="submit">Xác Nhận Thanh Toán</button>
+                </form>
+            </section>
+            <section id="consultation">
+                <h2>Tư Vấn</h2>
+                <div class="contact-form">
+                <form action="https://formsubmit.co/nguyennhatduyyyw@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="Yêu cầu tư vấn mới">
+                    <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you">
+                    <label for="consultationName">Tên:</label>
+                    <input type="text" id="consultationName" name="consultationName" placeholder="Nhập tên của bạn" required>
+                    <label for="consultationEmail">Email:</label>
+                    <input type="email" id="consultationEmail" name="consultationEmail" placeholder="Nhập email của bạn" required>
+                    <label for="consultationMessage">Tin nhắn:</label>
+                    <textarea id="consultationMessage" name="consultationMessage" rows="4" placeholder="Nhập tin nhắn của bạn" required></textarea>
+                    <button type="submit">Gửi</button>
+                </form>
             </div>
-        </section>
-        <section id="order-status">
-            <h2>Kiểm Tra Đơn Hàng</h2>
-            <div class="order-status">
-                <label for="orderId">Nhập mã đơn hàng:</label>
-                <input type="text" id="orderId" name="orderId" required>
-                <button onclick="checkOrderStatus()">Kiểm Tra</button>
-                <div id="order-status-result" class="order-status-result"></div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Bánh Trung Thu Ngọc Bích.</p>
-    </footer>
+            </section>
+            <section id="order-status">
+                <h2>Kiểm Tra Đơn Hàng</h2>
+                <div class="order-status">
+                    <label for="orderId">Nhập mã đơn hàng:</label>
+                    <input type="text" id="orderId" name="orderId" required>
+                    <button onclick="checkOrderStatus()">Kiểm Tra</button>
+                    <div id="order-status-result" class="order-status-result"></div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2024 Bánh Trung Thu Ngọc Bích.</p>
+        </footer>
     <script>
         const cart = [];
-        const orders = {}; // Simulate order storage
+        const orders = {}; 
     
         function addToCart(product, price) {
             const existingItem = cart.find(item => item.product === product);
@@ -401,7 +409,7 @@
             const phone = document.getElementById('phone').value;
             const paymentMethod = document.getElementById('payment-method').value;
     
-            const orderId = Date.now(); // Simple order ID based on timestamp
+            const orderId = Date.now(); 
             orders[orderId] = {
                 name, address, phone, paymentMethod, status: 'Đang xử lý'
             };
